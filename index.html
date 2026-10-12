@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VAI TRÒ TIÊU CỰC CỦA WTO TRONG QUAN HỆ QUỐC TẾ - NHÓM 6</title>
+  
+  <!-- Nạp Google Font Anton -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark-brown: #190807;
+      --card-maroon: #260e0a;
+      --card-maroon-hover: #3b1610;
+      --text-white: #ffffff;
+      --text-gray: #d4d4d4;
+      --accent-red: #d14334;
+      
+      /* Cấu hình font theo yêu cầu: Anton không in đậm & Times New Roman */
+      --font-heading: 'Anton', Impact, sans-serif;
+      --font-body: 'Times New Roman', Times, serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg-dark-brown);
+      font-family: var(--font-body);
+      color: var(--text-white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ================= TOP NAVIGATION ================= */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 52px;
+      z-index: 1000;
+      background: #dadada;
+      color: #1a1a1a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 48px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .top-nav .logo {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 1.5rem;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links span {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 1.15rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links span:hover {
+      opacity: 0.6;
+    }
+
+    /* ================= SPA VIEW CONTAINERS ================= */
+    .view-screen {
+      position: fixed;
+      top: 52px;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 52px);
+      display: none;
+      overflow-y: auto;
+    }
+
+    /* ================= 1. LANDING PAGE ================= */
+    #view-landing {
+      overflow: hidden;
+      background: #190807;
+    }
+
+    .landing-layout {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 55% 45%;
+    }
+
+    .landing-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 60px 0 80px;
+      z-index: 2;
+    }
+
+    .landing-sub-top {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 2.2rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #dfdfdf;
+      margin-bottom: -5px;
+    }
+
+    .landing-hero-wto {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: clamp(8rem, 18vw, 15rem);
+      line-height: 0.82;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+      background: linear-gradient(180deg, #ffffff 40%, rgba(255,255,255,0.45) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 10px 0;
+    }
+
+    .landing-sub-bottom {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #dfdfdf;
+      margin-bottom: 45px;
+    }
+
+    .btn-tim-hieu-them {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 42px;
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 1.35rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #190807;
+      background: #ececec;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      width: fit-content;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+    }
+
+    .btn-tim-hieu-them:hover {
+      background: #ffffff;
+      transform: scale(1.06);
+      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
+    }
+
+    .landing-right {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #110403;
+    }
+
+    .landing-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(125%);
+      mask-image: linear-gradient(to left, black 65%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to left, black 65%, transparent 100%);
+    }
+
+    /* ================= 2. GRID 6 MỤC LỤC ================= */
+    #view-grid {
+      background: #cfd0d2;
+      padding: 60px 40px;
+    }
+
+    .grid-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .card-topic {
+      background: var(--card-maroon);
+      border-radius: 36px;
+      padding: 42px 32px;
+      min-height: 330px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      cursor: pointer;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+      user-select: none;
+    }
+
+    .card-topic:hover {
+      transform: translateY(-16px) scale(1.03);
+      background: var(--card-maroon-hover);
+      box-shadow: 0 28px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .card-header-flex {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .card-num-text {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 5rem;
+      line-height: 0.85;
+      color: #ffffff;
+    }
+
+    .card-title-text {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 2.2rem;
+      line-height: 1.05;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .card-desc-text {
+      font-family: var(--font-body);
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #f0f0f0;
+    }
+
+    /* ================= 3. TRANG CHI TIẾT ĐỀ MỤC ================= */
+    #view-detail {
+      background: var(--bg-dark-brown);
+      padding-bottom: 90px;
+    }
+
+    .detail-hero-banner {
+      position: relative;
+      height: 380px;
+      width: 100%;
+      background: #110403;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 40px;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .detail-hero-banner img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(85%) brightness(0.38) contrast(1.15);
+    }
+
+    .detail-hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+    }
+
+    .detail-hero-num {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: clamp(6.5rem, 12vw, 10.5rem);
+      line-height: 0.75;
+      color: #ffffff;
+      background: linear-gradient(180deg, #ffffff 40%, rgba(255,255,255,0.3) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .detail-hero-title {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+      letter-spacing: 0.05em;
+      color: #ffffff;
+      text-transform: uppercase;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.85);
+    }
+
+    .detail-content-wrap {
+      max-width: 1060px;
+      margin: 40px auto 0 auto;
+      padding: 0 24px;
+    }
+
+    .detail-plain-container {
+      color: var(--text-gray);
+      line-height: 1.85;
+      font-size: 1.25rem;
+    }
+
+    .paper-main-title {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 2.8rem;
+      letter-spacing: 0.04em;
+      text-align: left;
+      color: #ffffff;
+      text-transform: uppercase;
+      border-bottom: 2px solid #441712;
+      padding-bottom: 16px;
+      margin-bottom: 30px;
+    }
+
+    .paper-keyword {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      display: inline-block;
+      color: #ff8577;
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .paper-sapo {
+      font-family: var(--font-body);
+      font-size: 1.35rem;
+      font-style: italic;
+      line-height: 1.75;
+      color: #ffffff;
+      border-left: 4px solid var(--accent-red);
+      padding-left: 20px;
+      margin: 25px 0 35px 0;
+    }
+
+    .paper-h3 {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 1.95rem;
+      letter-spacing: 0.04em;
+      color: #ff9e93;
+      margin: 40px 0 16px 0;
+      text-transform: uppercase;
+    }
+
+    .paper-text {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      line-height: 1.9;
+      color: #d6d6d6;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    .paper-ul {
+      list-style-type: none;
+      margin: 16px 0 24px 0;
+    }
+
+    .paper-ul li {
+      font-family: var(--font-body);
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+      line-height: 1.85;
+      color: #d6d6d6;
+      text-align: justify;
+    }
+
+    .paper-ul li::before {
+      content: "▪";
+      position: absolute;
+      left: 6px;
+      color: var(--accent-red);
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .plain-evidence-box {
+      margin: 35px 0;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .plain-evidence-title {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 1.6rem;
+      letter-spacing: 0.03em;
+      color: #ffffff;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    .plain-evidence-img {
+      width: 100%;
+      max-height: 480px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 18px 0;
+      background: #000;
+    }
+
+    .plain-evidence-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .plain-evidence-caption {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: #a0a0a0;
+      font-style: italic;
+      text-align: center;
+      margin-top: 6px;
+      margin-bottom: 18px;
+    }
+
+    .plain-conclusion {
+      border-left: 3px solid #ff7a6b;
+      padding-left: 20px;
+      margin: 40px 0;
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      color: #ffffff;
+      line-height: 1.85;
+    }
+
+    .plain-conclusion strong {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 1.35rem;
+      letter-spacing: 0.04em;
+      color: #ff9e93;
+    }
+
+    .detail-nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .btn-page-nav {
+      background: #2b0f0b;
+      color: #ffffff;
+      border: 1px solid #4a1913;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 1.15rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.25s;
+    }
+
+    .btn-page-nav:hover {
+      background: #541911;
+      transform: translateY(-3px);
+    }
+
+    .btn-page-nav.secondary {
+      background: #333333;
+      border-color: #555555;
+    }
+
+    .btn-page-nav.secondary:hover {
+      background: #444444;
+    }
+
+    /* ================= MODAL SOURCE ================= */
+    .source-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .source-modal-overlay.active {
+      display: flex;
+    }
+
+    .source-modal-card {
+      background: #1f0b09;
+      border: 1px solid #4d1812;
+      border-radius: 16px;
+      max-width: 760px;
+      width: 100%;
+      padding: 36px 40px;
+      color: #dcdcdc;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    }
+
+    .source-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #4d1812;
+      padding-bottom: 12px;
+    }
+
+    .source-modal-title {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      font-size: 2rem;
+      color: #ffffff;
+      letter-spacing: 0.05em;
+    }
+
+    .source-modal-close {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .source-list {
+      list-style-type: none;
+    }
+
+    .source-list li {
+      font-family: var(--font-body);
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin-bottom: 18px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .source-list li::before {
+      content: "🔗";
+      position: absolute;
+      left: 0;
+      font-size: 0.9rem;
+    }
+
+    .source-list a {
+      color: #ff8577;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .landing-layout { grid-template-columns: 1fr; }
+      .landing-right { display: none; }
+      .landing-left { padding: 40px 30px; }
+      .grid-wrap { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .grid-wrap { grid-template-columns: 1fr; }
+      .top-nav { padding: 0 20px; }
+      .detail-nav-footer { flex-direction: column; gap: 14px; }
+      .btn-page-nav { width: 100%; justify-content: center; }
+    }
+
+    /* ===== SMOOTH PAGE TRANSITIONS ===== */
+
+    .view-screen {
+        opacity: 0;
+        transform: translate3d(0, 18px, 0);
+        transition:
+            opacity 0.42s ease,
+            transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: opacity, transform;
+    }
+
+    .view-screen.active {
+        display: block;
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        animation: pageEnter 0.58s
+            cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .view-screen.is-leaving {
+        display: block;
+        opacity: 0;
+        transform: translate3d(0, -10px, 0);
+        pointer-events: none;
+        animation: pageLeave 0.32s ease both;
+    }
+
+    @keyframes pageEnter {
+        from {
+            opacity: 0;
+            transform: translate3d(0, 18px, 0);
+        }
+        to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    @keyframes pageLeave {
+        from {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+        to {
+            opacity: 0;
+            transform: translate3d(0, -10px, 0);
+        }
+    }
+
+    /* Giữ nguyên bounce của các card */
+    .card-topic {
+        transition:
+            transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1),
+            box-shadow 0.38s ease,
+            background 0.25s ease;
+    }
+
+    /* Tôn trọng cài đặt giảm chuyển động */
+    @media (prefers-reduced-motion: reduce) {
+        .view-screen,
+        .view-screen.active,
+        .view-screen.is-leaving {
+            animation: none;
+            transition: none;
+            transform: none;
+        }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= TOP NAVIGATION ================= -->
+  <header class="top-nav">
+    <div class="logo" onclick="showScreen('landing')">NHÓM 6</div>
+    <nav class="nav-links">
+      <span onclick="showScreen('landing')">Home</span>
+      <span onclick="showScreen('grid')">Key Issues</span>
+      <span onclick="openSourceModal()">Source</span>
+    </nav>
+  </header>
+
+  <!-- ================= VIEW 1: LANDING PAGE ĐỘC LẬP ================= -->
+  <section class="view-screen active" id="view-landing">
+    <div class="landing-layout">
+      <div class="landing-left">
+        <div class="landing-sub-top">VAI TRÒ TIÊU CỰC CỦA</div>
+        <h1 class="landing-hero-wto">WTO</h1>
+        <div class="landing-sub-bottom">TRONG QUAN HỆ QUỐC TẾ</div>
+        <button class="btn-tim-hieu-them" onclick="showScreen('grid')">
+          Tìm hiểu thêm ➔
+        </button>
+      </div>
+      <div class="landing-right">
+        <img src="https://i.imgur.com/2y6UC7K.jpeg" 
+             alt="World Trade Organization Headquarters">
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VIEW 2: MỤC LỤC 6 Ô ================= -->
+  <section class="view-screen" id="view-grid">
+    <div class="grid-wrap">
+
+      <!-- 01 -->
+      <article class="card-topic" onclick="openDetail(1)">
+        <div class="card-header-flex">
+          <span class="card-num-text">01</span>
+          <h2 class="card-title-text">Gây Bất<br>Bình Đẳng</h2>
+        </div>
+        <p class="card-desc-text">Có vai trò điều phối thương mại toàn cầu nhưng bị chi phối bởi các nước lớn</p>
+      </article>
+
+      <!-- 02 -->
+      <article class="card-topic" onclick="openDetail(2)">
+        <div class="card-header-flex">
+          <span class="card-num-text">02</span>
+          <h2 class="card-title-text">Hạn Chế<br>Pháp Lý</h2>
+        </div>
+        <p class="card-desc-text">Thúc đẩy hội nhập kinh tế nhưng làm hạn chế chủ quyền pháp lý quốc gia</p>
+      </article>
+
+      <!-- 03 -->
+      <article class="card-topic" onclick="openDetail(3)">
+        <div class="card-header-flex">
+          <span class="card-num-text">03</span>
+          <h2 class="card-title-text">Giải Quyết<br>Tranh Chấp</h2>
+        </div>
+        <p class="card-desc-text">Cơ chế giải quyết tranh chấp còn khá nhiều bất cập và tốn kém tài chính</p>
+      </article>
+
+      <!-- 04 -->
+      <article class="card-topic" onclick="openDetail(4)">
+        <div class="card-header-flex">
+          <span class="card-num-text">04</span>
+          <h2 class="card-title-text">Khủng Hoảng<br>Thương Mại</h2>
+        </div>
+        <p class="card-desc-text">Có vai trò ổn định kinh tế toàn cầu nhưng không kiểm soát được khủng hoảng thương mại</p>
+      </article>
+
+      <!-- 05 -->
+      <article class="card-topic" onclick="openDetail(5)">
+        <div class="card-header-flex">
+          <span class="card-num-text">05</span>
+          <h2 class="card-title-text">Bất Ổn<br>Kinh Tế</h2>
+        </div>
+        <p class="card-desc-text">Thúc đẩy tự do thương mại nhưng làm gia tăng bất ổn cho các nền kinh tế yếu</p>
+      </article>
+
+      <!-- 06 -->
+      <article class="card-topic" onclick="openDetail(6)">
+        <div class="card-header-flex">
+          <span class="card-num-text">06</span>
+          <h2 class="card-title-text">Gia Tăng<br>Phụ Thuộc</h2>
+        </div>
+        <p class="card-desc-text">Mở rộng cơ hội thương mại toàn cầu nhưng làm gia tăng sự phụ thuộc vào các thị trường quốc tế</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= VIEW 3: TRANG BÀI VIẾT CHI TIẾT (PLAIN TEXT) ================= -->
+  <section class="view-screen" id="view-detail">
+    <div class="detail-hero-banner">
+      <img id="detail-header-img" src="https://i.imgur.com/2y6UC7K.jpeg" alt="WTO Banner">
+      <div class="detail-hero-content">
+        <div class="detail-hero-num" id="detail-display-num">01</div>
+        <div class="detail-hero-title" id="detail-display-title">GÂY RA BẤT BÌNH ĐẲNG</div>
+      </div>
+    </div>
+
+    <!-- KHUNG PLAIN TEXT TOÀN DIỆN TRỰC TIẾP TRÊN NỀN TRANG -->
+    <div class="detail-content-wrap">
+      <div class="detail-plain-container" id="detail-inner-html"></div>
+
+      <!-- THANH ĐIỀU HƯỚNG CUỐI BÀI -->
+      <div class="detail-nav-footer">
+        <button class="btn-page-nav" id="btn-prev-topic" onclick="navigateTopic(-1)">← Đề mục trước</button>
+        <button class="btn-page-nav secondary" onclick="showScreen('grid')">☰ Danh sách 6 đề mục</button>
+        <button class="btn-page-nav" id="btn-next-topic" onclick="navigateTopic(1)">Đề mục tiếp theo →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MODAL SOURCE ================= -->
+  <div class="source-modal-overlay" id="source-modal" onclick="closeSourceModal(event)">
+    <div class="source-modal-card" onclick="event.stopPropagation()">
+      <div class="source-modal-header">
+        <div class="source-modal-title">DANH MỤC NGUỒN TÀI LIỆU (SOURCE)</div>
+        <button class="source-modal-close" onclick="closeSourceModal()">&times;</button>
+      </div>
+      <ul class="source-list">
+        <li><strong>Tổ chức Thương mại Thế giới (WTO) - Cơ chế DSU & Thống kê tranh chấp:</strong><br><a href="https://www.wto.org/english/tratop_e/dispu_e/dispustats_e.htm" target="_blank">https://www.wto.org/english/tratop_e/dispu_e/dispustats_e.htm</a></li>
+        <li><strong>Báo cáo dự báo triển vọng thương mại thế giới 2025 (WTO News):</strong><br><a href="https://www.wto.org/english/news_e/news25_e/tfore_16apr25_e.htm" target="_blank">https://www.wto.org/english/news_e/news25_e/tfore_16apr25_e.htm</a></li>
+        <li><strong>Diễn đàn Thương mại và Phát triển Liên Hợp Quốc (UNCTAD) - State of Commodity Dependence 2025:</strong><br><a href="https://unctad.org/publication/state-commodity-dependence-2025" target="_blank">https://unctad.org/publication/state-commodity-dependence-2025</a></li>
+        <li><strong>UNCTADstat - Dữ liệu chỉ số tập trung xuất khẩu (Export Concentration Index 2022–2024):</strong><br><a href="https://unctadstat.unctad.org/insights/theme/229" target="_blank">https://unctadstat.unctad.org/insights/theme/229</a></li>
+        <li><strong>UNCTAD - Commodity Dependence: A Twenty-Year Perspective:</strong><br><a href="https://unctad.org/publication/commodity-dependence-twenty-year-perspective" target="_blank">https://unctad.org/publication/commodity-dependence-twenty-year-perspective</a></li>
+        <li><strong>Báo Chính Phủ:</strong> Tư liệu phân tích Vòng đàm phán Doha (Doha Development Round) sụp đổ năm 2008.</li>
+        <li><strong>Trung tâm Nghiên cứu Chính sách Kinh tế (CEPR):</strong> Nghiên cứu Cơ chế tự vệ đặc biệt (SSM) và bế tắc Geneva.</li>
+        <li><strong>Viện Nghiên cứu Kinh tế Phát triển Thế giới thuộc Đại học Liên Hợp Quốc (UNU-WIDER):</strong> Xung đột đàm phán nông nghiệp giữa các nền kinh tế phát triển và mới nổi.</li>
+        <li><strong>Stanford University (Center on Democracy, Development and the Rule of Law):</strong> Cấu trúc thỏa thuận trọn gói (Single Undertaking) của WTO.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT XỬ LÝ DỮ LIỆU ĐẦY ĐỦ ================= -->
+  <script>
+    let currentTopicIndex = 1;
+
+    // DỮ LIỆU ĐẦY ĐỦ 100% THEO CÁC FILE ĐÃ GỬI (PLAIN TEXT KHÔNG CÓ POPUP TRẮNG)
+    const database = {
+      1: {
+        num: "01",
+        title: "GÂY RA BẤT BÌNH ĐẲNG",
+        bannerImg: "https://i.imgur.com/2y6UC7K.jpeg",
+        html: `
+          <div class="paper-keyword">BÁO CÁO THƯƠNG MẠI QUỐC TẾ | CHUYÊN ĐỀ 01</div>
+          <h2 class="paper-main-title">BẤT BÌNH ĐẲNG TRONG THƯƠNG MẠI TOÀN CẦU: THỰC TRẠNG ĐỐI XỬ BẤT CÔNG VÀ GÁNH NẶNG KINH TẾ LÊN CÁC QUỐC GIA ĐANG PHÁT TRIỂN TRONG CƠ CHẾ WTO</h2>
+
+          <div class="paper-sapo">
+            GENEVA - Theo các nguyên tắc cốt lõi của Tổ chức Thương mại Thế giới (WTO), mọi quốc gia thành viên đều bình đẳng và bình đẳng trong việc hưởng các đãi ngộ Tối huệ quốc (MFN) cũng như Đối xử quốc gia (NT), cùng hướng tới mục tiêu giảm thiểu các hàng rào thuế quan và phi thuế quan. Tuy nhiên, trên thực tế thương mại toàn cầu, các nước đang phát triển tiếp tục đối mặt với tình trạng bất bình đẳng sâu sắc, bị áp đặt nghĩa vụ sản xuất và mức thuế chưa phù hợp.
+          </div>
+
+          <p class="paper-text">
+            Điều này đẩy các nền kinh tế vốn phụ thuộc vào xuất khẩu hàng hóa sơ chế và nguồn lao động phổ thông vào thế bất lợi kép. Thực trạng bất bình đẳng này được thể hiện rõ qua ba khía cạnh cốt lõi dưới đây:
+          </p>
+
+          <h3 class="paper-h3">1. Bất bình đẳng quyền lực và thế cân bằng bị lệch</h3>
+          <p class="paper-text"><strong>Ưu thế áp đảo từ các khối kinh tế phát triển:</strong></p>
+          <ul class="paper-ul">
+            <li>Các nền kinh tế lớn như Mỹ, Liên minh châu Âu (EU) và Nhật Bản sở hữu tiềm lực tài chính dồi dào cùng đội ngũ chuyên gia pháp lý hùng hậu. Lợi thế này cho phép họ dễ dàng chủ động định hình luật lệ và bảo vệ tối đa lợi ích riêng trong mọi cuộc đàm phán.</li>
+            <li>Ngược lại, các quốc gia đang phát triển luôn ở thế yếu do thiếu hụt ngân sách duy trì phái đoàn thường trực tại trụ sở Geneva, đồng thời thiếu các chuyên gia am hiểu sâu về luật pháp thương mại quốc tế để bảo vệ tiếng nói của mình.</li>
+          </ul>
+
+          <p class="paper-text"><strong>Gánh nặng pháp lý và áp lực trừng phạt:</strong></p>
+          <ul class="paper-ul">
+            <li>Sự chênh lệch này buộc các nước nghèo phải chấp nhận mở cửa thị trường và cắt giảm thuế quan, trực tiếp làm sụt giảm nguồn thu ngân sách quốc gia.</li>
+            <li>Họ đồng thời phải gánh vác các tiêu chuẩn khắt khe về lao động, môi trường và sở hữu trí tuệ vốn vượt quá năng lực đáp ứng, luôn đối mặt với nguy cơ trừng phạt kinh tế nếu không tuân thủ.</li>
+          </ul>
+          <p class="paper-text"><em>"Hạn chế lớn nhất của WTO chính là sự mất cân bằng quyền lực. Các nước giàu sở hữu nguồn lực tài chính và đội ngũ luật sư hùng hậu để áp đặt các quy định có lợi cho họ, trong khi các nước đang phát triển không đủ kinh phí duy trì phái đoàn hay thuê chuyên gia."</em></p>
+
+          <h3 class="paper-h3">2. Bế tắc đa phương và nguy cơ phân mảnh thương mại</h3>
+          <p class="paper-text"><strong>Sự sụp đổ của các kỳ đàm phán lịch sử:</strong></p>
+          <ul class="paper-ul">
+            <li>Xung đột lợi ích kéo dài giữa các khối nước giàu và nghèo đã khiến hệ thống đàm phán đa phương của WTO lâm vào bế tắc nghiêm trọng. Minh chứng rõ nhất là sự thất bại của Vòng đàm phán Doha khởi động từ năm 2001, khi các bên không thể thống nhất về trợ cấp nông nghiệp và cơ chế tự vệ đặc biệt.</li>
+            <li>Việc thiếu vắng tiếng nói chung giữa các cường quốc truyền thống và các nền kinh tế mới nổi đã biến nguyên tắc "thỏa thuận trọn gói" thành rào cản ngăn cản mọi tiến trình cải cách.</li>
+          </ul>
+
+          <p class="paper-text"><strong>Xu hướng "xé lẻ" và sự trỗi dậy của các FTA:</strong></p>
+          <ul class="paper-ul">
+            <li>Khi niềm tin vào vai trò của WTO suy giảm, các quốc gia buộc phải dịch chuyển sang ký kết các hiệp định thương mại tự do (FTA) song phương và khu vực nhằm tự bảo vệ lợi ích kinh tế.</li>
+            <li>Tuy nhiên, sự bùng nổ của mạng lưới FTA chăng lưới tạo ra hàng loạt quy tắc xuất xứ và tiêu chuẩn kỹ thuật chồng chéo. Điều này làm gia tăng chi phí tuân thủ cho doanh nghiệp và khiến các nền kinh tế nhỏ lẻ càng thêm yếu thế trên bản đồ thương mại toàn cầu.</li>
+          </ul>
+
+          <h3 class="paper-h3">3. Chương trình hỗ trợ mang tính hình thức</h3>
+          <p class="paper-text"><strong>Xa rời thực tế và thiếu nguồn vốn đầu tư:</strong></p>
+          <ul class="paper-ul">
+            <li>Mặc dù WTO đưa ra nhiều chương trình trợ giúp kỹ thuật, các hỗ trợ này bị đánh giá là nặng tính lý thuyết và thiếu hướng dẫn thực hành. Nhiều giải pháp công nghệ cao được đề xuất nhưng hoàn toàn không tương thích với năng lực tài chính hay kỹ thuật tại địa phương.</li>
+            <li>Song song đó, nguồn vốn tài trợ cho hạ tầng cốt lõi – như hệ thống kho bãi, trung tâm logistics và phòng kiểm nghiệm đạt chuẩn – lại vô cùng hạn chế, khiến các cam kết hỗ trợ khó đi vào thực chất.</li>
+          </ul>
+
+          <div class="plain-evidence-box">
+            <div class="plain-evidence-title">Bài học từ ngành cà phê Ethiopia</div>
+            <div class="plain-evidence-img">
+              <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=80" alt="Nông dân thu hoạch cà phê">
+            </div>
+            <div class="plain-evidence-caption">Nông dân Ethiopia bế tắc trước rào cản kỹ thuật quốc tế do thiếu hạ tầng kiểm định và công nghệ chế biến.</div>
+            <p class="paper-text">
+              Một ví dụ điển hình là ngành sản xuất cà phê tại Ethiopia. Dù là quốc gia xuất khẩu hàng đầu, người nông dân nơi đây vẫn bế tắc trước các rào cản kỹ thuật khắt khe từ thị trường quốc tế do thiếu hạ tầng kiểm định và công nghệ chế biến phù hợp.
+            </p>
+          </div>
+        `
+      },
+
+      2: {
+        num: "02",
+        title: "HẠN CHẾ PHÁP LÝ",
+        bannerImg: "https://i.imgur.com/2y6UC7K.jpeg",
+        html: `
+          <div class="paper-keyword">BÁO CÁO THƯƠNG MẠI QUỐC TẾ | CHUYÊN ĐỀ 02</div>
+          <h2 class="paper-main-title">TỔ CHỨC THƯƠNG MẠI THẾ GIỚI VÀ NHỮNG RÀO CẢN BẢO HỘ</h2>
+
+          <div class="paper-sapo">
+            Phân tích tác động của các cam kết thuế quan, cơ chế giải quyết tranh chấp và Hiệp định TRIPS đối với các quốc gia thành viên: khi hội nhập kinh tế quốc tế làm hạn chế quyền tự quyết chính sách và không gian pháp lý quốc gia.
+          </div>
+
+          <p class="paper-text">
+            Trong Biểu cam kết thuế quan, các quốc gia khi gia nhập WTO phải cam kết mức thuế quan tối đa đối với hàng hoá nhập khẩu, do đó, khi muốn bảo vệ sản xuất trong nước, các quốc gia không được tự do tăng mức thuế quan.
+          </p>
+
+          <div class="plain-evidence-box">
+            <div class="plain-evidence-title">Hoa Kỳ đối với ngành sản xuất thép vào năm 2002</div>
+            <div class="plain-evidence-img">
+              <img src="https://i.imgur.com/lPBCp2K.jpeg" alt="Ngành sản xuất thép Hoa Kỳ 2002">
+            </div>
+            <div class="plain-evidence-caption">Mỹ buộc phải dỡ bỏ thuế bổ sung ngành thép vào tháng 12/2003 sau khi bị WTO phán quyết không phù hợp.</div>
+            <p class="paper-text">
+              Sau khi ngành thép trong nước gặp khó khăn do cạnh tranh từ thép nhập khẩu, chính quyền Mỹ áp dụng thuế bổ sung từ 8% lên 30% nhằm bảo vệ các nhà sản xuất thép nội địa. Tuy nhiên, biện pháp này bị nhiều đối tác thương mại phản đối và WTO xác định là không phù hợp với quy định thương mại quốc tế → Mỹ sau đó phải dỡ bỏ biện pháp này vào tháng 12/2003.
+            </p>
+          </div>
+
+          <p class="paper-text">
+            Khi gia nhập WTO, các quốc gia phải tuân thủ theo quy định và pháp lý, vậy nên khi một quốc gia áp dụng các biện pháp bảo hộ thương mại trái với quy định của WTO, quốc gia đó có thể bị các quốc gia thành viên khác kiện thông qua Cơ chế giải quyết tranh chấp (DSU). Nếu không thực hiện, quốc gia thắng kiện có quyền yêu cầu WTO cho phép áp dụng các biện pháp trả đũa thương mại (thường là rút lại các nhượng bộ về thuế quan đối với hàng hóa của nước vi phạm) ở mức tương đương với thiệt hại gây ra.
+          </p>
+
+          <h3 class="paper-h3">Thách thức từ Hiệp định TRIPS và Quyền Quyết định Y tế</h3>
+          <p class="paper-text">
+            Hiệp định TRIPS thiết lập các tiêu chuẩn tối thiểu về bảo hộ và thực thi quyền sở hữu trí tuệ trên phạm vi toàn cầu, nhằm cân bằng giữa tự do thương mại và bảo vệ quyền lợi của các nhà sáng tạo. Một nội dung cơ bản trong Hiệp định TRIPS quy định rằng:
+          </p>
+          <p class="paper-text" style="font-style: italic; color: #fff; padding-left: 20px; border-left: 3px solid var(--accent-red);">
+            "Mọi sự ưu đãi, chiếu cố, đặc quyền hoặc miễn trừ mà một nước thành viên dành cho công dân của một nước bất kỳ phải được áp dụng ngay lập tức và vô điều kiện cho công dân của mọi nước thành viên WTO khác."
+          </p>
+          <p class="paper-text">
+            Điều này đang cản trở khả năng tiếp cận thuốc men giá rẻ và ảnh hưởng tới sức khoẻ cộng đồng ở các nước đang phát triển.
+          </p>
+
+          <div class="plain-evidence-box">
+            <div class="plain-evidence-title">Tranh chấp Đạo luật Sáng chế Dược phẩm của Ấn Độ</div>
+            <div class="plain-evidence-img">
+              <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=1200&q=80" alt="Sản xuất dược phẩm generic tại Ấn Độ">
+            </div>
+            <div class="plain-evidence-caption">Sức ép pháp lý từ WTO buộc Ấn Độ sửa đổi toàn bộ luật Sáng chế năm 2005, hạn chế thuốc generic giá rẻ.</div>
+            <p class="paper-text">
+              Trước khi gia nhập WTO, Ấn Độ sử dụng quyền chủ quyền của mình để ban hành đạo luật Sáng chế 1970. Luật này không bảo hộ sáng chế sản phẩm đối với dược phẩm mà chỉ bảo hộ quy trình sản xuất. Mục đích chủ quyền của Ấn Độ là cho phép các công ty trong nước sao chép công thức thuốc để sản xuất thuốc generic giá rẻ phục vụ người dân nghèo.
+            </p>
+            <p class="paper-text">
+              Tuy nhiên, Điều 27 của Hiệp định TRIPS quy định bắt buộc các thành viên phải bảo hộ sáng chế cho cả sản phẩm lẫn quy trình trong mọi lĩnh vực công nghệ (bao gồm cả y tế). Do đó, Hoa Kỳ đã kiện Ấn Độ ra Cơ quan giải quyết tranh chấp của WTO, kết quả, Ấn Độ thua kiện, mất quyền tự quyết về chính sách y tế và bắt buộc phải sửa toàn bộ luật Sáng chế vào năm 2005 để công nhận bằng sáng chế sản phẩm dược phẩm theo áp lực pháp lý từ WTO.
+            </p>
+          </div>
+        `
+      },
+
+      3: {
+        num: "03",
+        title: "GIẢI QUYẾT TRANH CHẤP",
+        bannerImg: "https://i.imgur.com/2y6UC7K.jpeg",
+        html: `
+          <div class="paper-keyword">BÁO CÁO THƯƠNG MẠI QUỐC TẾ | CHUYÊN ĐỀ 03</div>
+          <h2 class="paper-main-title">BẤT BÌNH ĐẲNG TRONG THƯƠNG MẠI TOÀN CẦU: KHI LUẬT CHƠI THUỘC VỀ CÁC SIÊU CƯỜNG</h2>
+
+          <div class="paper-sapo">
+            Dù hướng tới sự bình đẳng pháp lý, cơ chế giải quyết tranh chấp của WTO và các hiệp định song phương vẫn để lộ những lỗ hổng trước sức ép kinh tế - chính trị từ các quốc gia lớn.
+          </div>
+
+          <h3 class="paper-h3">Cơ chế tranh chấp đắt đỏ và phức tạp</h3>
+          <p class="paper-text">
+            Có thể nhận thấy, Cơ quan giải quyết tranh chấp của WTO là nơi các quốc gia có thể bảo vệ quyền lợi của mình, dựa trên quy định và luật pháp của Tổ chức thương mại thế giới. Tuy nhiên, cần nhìn nhận một cách thực tế rằng, quy trình giải quyết tranh chấp thường kéo dài, phức tạp và gây tốn kém cho các bên tham gia giải quyết. Các bên tham gia phải chi trả chi phí cho việc thuê tư vấn pháp lý, chuẩn bị tài liệu hồ sơ, chi phí toà án (kiện tụng),... Điều này càng là một vấn đề lớn đối với những quốc gia hoặc tổ chức nhỏ, ít nguồn lực tài chính.
+          </p>
+
+          <div class="plain-evidence-box">
+            <div class="plain-evidence-title">Cuộc chiến pháp lý kéo dài 17 năm Boeing – Airbus (2004–2021)</div>
+            <div class="plain-evidence-img">
+              <img src="https://i.imgur.com/mXXlYyx.jpeg" alt="Tranh chấp trợ cấp máy bay Boeing và Airbus">
+            </div>
+            <div class="plain-evidence-caption">Đại án pháp lý 17 năm tiêu tốn hàng trăm triệu USD tư vấn và hàng tỷ USD thuế trả đũa lẫn nhau giữa Mỹ và EU.</div>
+            <p class="paper-text">
+              Một trong những ví dụ thực tế điển hình nhất về việc giải quyết tranh chấp tại WTO tốn kém chi phí là cuộc chiến pháp lý kéo dài 17 năm (2004–2021) giữa Mỹ và Liên minh Châu Âu (EU) liên quan đến cáo buộc trợ cấp bất hợp pháp cho hai hãng máy bay Boeing và Airbus. Do tính chất phức tạp của ngành hàng không, hai bên đã phải chi trả hàng trăm triệu USD chỉ riêng cho các công ty luật và chuyên gia kinh tế hàng đầu thế giới để phân tích các mô hình kinh tế lượng và chuẩn bị hàng chục ngàn trang hồ sơ chứng cứ qua nhiều cấp xét xử từ Ban hội thẩm đến Cơ quan Phúc thẩm tại Geneva.
+            </p>
+            <p class="paper-text">
+              Bên cạnh chi phí vận hành bộ máy hành chính khổng lồ suốt gần hai thập kỷ, tổn thất lớn nhất của vụ kiện này chính là chi phí trả đũa thương mại, khi WTO cho phép Mỹ áp thuế trừng phạt lên 7,5 tỷ USD hàng hóa EU và EU đáp trả bằng mức thuế lên 4 tỷ USD hàng hóa Mỹ. Khoản thuế này đã trực tiếp làm tê liệt và gây thiệt hại hàng tỷ USD cho nhiều ngành kinh tế không liên quan như nông nghiệp, rượu vang và thực phẩm của cả hai bờ Đại Tây Dương, minh chứng rõ ràng cho thấy cơ chế giải quyết tranh chấp của WTO là một "cuộc chơi đắt đỏ" mà các quốc gia hoặc tổ chức không thể gánh vác được nếu không có nguồn lực tài chính “dư dả” (như Mỹ và EU trong ví dụ).
+            </p>
+          </div>
+
+          <h3 class="paper-h3">Mất cân bằng trong đàm phán và sức ép từ siêu cường</h3>
+          <p class="paper-text">
+            Bất chấp sự tồn tại của các khung pháp lý và luật giải quyết tranh chấp thương mại quốc tế, tình trạng mất cân bằng trong các tiến trình đàm phán vẫn là một thách thức nhức nhối đối với trật tự kinh tế toàn cầu. Trên thực tế, các quốc gia lớn thường xuyên tận dụng sức mạnh kinh tế và ảnh hưởng chính trị để gây áp lực lên các quốc gia nhỏ hoặc đang phát triển. Trước nguy cơ bị trả đũa thương mại, các nước yếu thế hơn thường có xu hướng buộc phải chấp nhận phương án giải quyết thông qua đàm phán song phương thay vì kích hoạt các cơ chế đa phương độc lập.
+          </p>
+
+          <div class="plain-evidence-box">
+            <div class="plain-evidence-title">Hồ sơ thực tiễn: Tiến trình đàm phán TPP (2010 – 2015) và tiêu chuẩn "TRIPS-plus"</div>
+            <div class="plain-evidence-img">
+              <img src="https://i.imgur.com/rKNxAxF.jpeg" alt="Đàm phán TPP giai đoạn 2010 - 2015">
+            </div>
+            <div class="plain-evidence-caption">Tiến trình đàm phán Hiệp định Đối tác xuyên Thái Bình Dương (TPP) dưới sự dẫn dắt của Mỹ.</div>
+            <p class="paper-text">
+              Sự bất đối xứng quyền lực thể hiện rõ nét nhất trong tiến trình đàm phán Hiệp định Đối tác xuyên Thái Bình Dương (TPP) giai đoạn 2010 – 2015 do Hoa Kỳ dẫn dắt. Bằng việc sử dụng quyền tiếp cận thị trường tiêu dùng khổng lồ làm đòn bẩy, Mỹ đã buộc các quốc gia đang phát triển như Việt Nam, Peru hay Malaysia chấp nhận các tiêu chuẩn khắt khe do Washington soạn thảo.
+            </p>
+            <p class="paper-text">
+              Các quốc gia này phải đánh đổi chủ quyền chính sách công lấy ưu đãi thuế quan ngắn hạn, nổi bật là việc chấp nhận các tiêu chuẩn "TRIPS-plus" bảo hộ nghiêm ngặt cho các tập đoàn dược phẩm đa quốc gia. Việc kéo dài thời gian độc quyền dữ liệu thử nghiệm thuốc sinh học lên tới 8 năm đã trực tiếp cản trở việc sản xuất thuốc generic giá rẻ, gây đe dọa nghiêm trọng đến an sinh y tế cộng đồng. Khoảng cách này còn bị nới rộng bởi sự chênh lệch nguồn lực tư vấn pháp lý giữa các đoàn đàm phán.
+            </p>
+          </div>
+
+          <div class="plain-evidence-box">
+            <div class="plain-evidence-title">Hồ sơ thực tiễn: Khủng hoảng Cơ quan Phúc thẩm WTO (Appellate Body)</div>
+            <div class="plain-evidence-img">
+              <img src="https://i.imgur.com/DN4DtIy.jpeg" alt="Cơ quan Phúc thẩm WTO bị đóng băng">
+            </div>
+            <div class="plain-evidence-caption">Quyền phủ quyết bổ nhiệm thẩm phán của Hoa Kỳ đã làm tê liệt hệ thống trọng tài tối cao từ ngày 11/12/2019.</div>
+            <p class="paper-text">
+              Mặc dù Tổ chức Thương mại Thế giới (WTO) được thiết lập dựa trên nguyên tắc bình đẳng giữa các thành viên, thực tế vận hành cho thấy những "ngoại lệ" nguy hiểm luôn tồn tại xung quanh các siêu cường kinh tế. Khi thiếu các cơ chế cưỡng chế thi hành đủ mạnh, các quốc gia lớn hoàn toàn có thể phớt lờ hoặc vô hiệu hóa các phán quyết bất lợi.
+            </p>
+            <p class="paper-text">
+              Minh chứng điển hình là việc Hoa Kỳ đơn phương sử dụng quyền phủ quyết để ngăn chặn việc bổ nhiệm và tái bổ nhiệm thành viên Cơ quan Phúc thẩm WTO, dẫn đến sự đóng băng toàn bộ hệ thống trọng tài tối cao từ ngày 11/12/2019. Lấy lý do cơ quan này lạm quyền tư pháp và vi phạm quy trình thủ tục xét xử, Washington đã lợi dụng nguyên tắc đồng thuận tuyệt đối để làm tê liệt cơ chế giải quyết tranh chấp. Lỗ hổng pháp lý này tạo điều kiện cho các nước lớn thực hiện chiến thuật cố tình kháng cáo các phán quyết bất lợi lên một cơ quan không còn hoạt động, qua đó trì hoãn vĩnh viễn nghĩa vụ thi hành và vô hiệu hóa cơ chế thực thi công lý đa phương.
+            </p>
+          </div>
+        `
+      },
+
+      4: {
+        num: "04",
+        title: "KHỦNG HOẢNG THƯƠNG MẠI",
+        bannerImg: "https://i.imgur.com/2y6UC7K.jpeg",
+        html: `
+          <div class="paper-keyword">BÁO CÁO THƯƠNG MẠI QUỐC TẾ | CHUYÊN ĐỀ 04</div>
+          <h2 class="paper-main-title">WTO CÓ VAI TRÒ ỔN ĐỊNH KINH TẾ TOÀN CẦU NHƯNG KHÔNG KIỂM SOÁT ĐƯỢC KHỦNG HOẢNG THƯƠNG MẠI</h2>
+
+          <div class="paper-sapo">
+            WTO góp phần tạo ra môi trường thương mại dựa trên quy tắc và hạn chế những hành động đơn phương. Tuy nhiên, tổ chức này không có quyền điều hành nền kinh tế thế giới và không thể ngăn chặn mọi cuộc khủng hoảng, xung đột hay làn sóng bảo hộ.
+          </div>
+
+          <p class="paper-text">
+            WTO tạo ra khuôn khổ quy tắc chung, cơ chế tham vấn và giải quyết tranh chấp nhằm hạn chế bất định trong thương mại quốc tế. Tuy nhiên, WTO không phải chính phủ toàn cầu, không trực tiếp kiểm soát chính sách tiền tệ, tài khóa, chiến tranh hay quyết định áp thuế đơn phương của từng nước. Khi cạnh tranh địa chính trị gia tăng, các quốc gia có thể ưu tiên an ninh kinh tế và lợi ích chiến lược hơn cam kết hợp tác thương mại. Hệ quả là quy tắc đa phương có thể bị đặt dưới áp lực, trong khi các doanh nghiệp và nền kinh tế phụ thuộc vào thương mại phải đối mặt với chi phí và bất định cao hơn.
+          </p>
+
+          <div class="plain-evidence-box">
+            <div class="plain-evidence-title">Cơ chế phúc thẩm tranh chấp WTO bị đình trệ</div>
+            <div class="plain-evidence-img">
+              <img src="https://i.imgur.com/lyC210O.jpeg" alt="Cơ chế phúc thẩm WTO đình trệ">
+            </div>
+            <div class="plain-evidence-caption">Đến tháng 12/2024, có 31 vụ kháng cáo đang bị đình trệ tại cơ quan Phúc thẩm của WTO.</div>
+            <p class="paper-text">
+              Từ tháng 12/2019, Cơ quan Phúc thẩm của WTO không thể thành lập hội đồng xét xử gồm 3 thành viên để xử lý các vụ kháng cáo mới, do các vị trí thành viên hết nhiệm kỳ không được bổ nhiệm thay thế. Theo thống kê của WTO, đến tháng 12/2024 có 31 vụ kháng cáo đang bị đình trệ tại cơ quan này.
+            </p>
+            <p class="paper-text">
+              Về tác động pháp lý, WTO có cơ chế pháp lý để xử lý bất đồng thương mại, nhưng cơ chế đó có thể gặp trở ngại khi các thành viên không đạt được đồng thuận về nhân sự và vận hành. Điều này làm suy giảm khả năng giải quyết dứt điểm một số tranh chấp theo quy trình phúc thẩm thông thường.
+            </p>
+          </div>
+
+          <div class="plain-evidence-box">
+            <div class="plain-evidence-title">Dự báo thương mại thế giới bị điều chỉnh giảm mạnh trong năm 2025</div>
+            <div class="plain-evidence-img">
+              <img src="https://i.imgur.com/gG26zga.jpeg" alt="Dự báo thương mại thế giới 2025">
+            </div>
+            <div class="plain-evidence-caption">Triển vọng trao đổi hàng hóa toàn cầu sụt giảm trước làn sóng thuế quan và bất định chính sách.</div>
+            <p class="paper-text">
+              Ngày 16/4/2025, WTO dự báo khối lượng thương mại hàng hóa toàn cầu sẽ giảm 0,2% trong năm 2025 theo các điều kiện và chính sách khi đó. Tổ chức này cho biết triển vọng đã xấu đi đáng kể do làn sóng thuế quan và bất định chính sách thương mại.
+            </p>
+            <p class="paper-text">
+              Dù WTO cung cấp quy tắc và diễn đàn đàm phán, tổ chức này không thể tự mình ngăn mọi thành viên thay đổi chính sách thuế quan hoặc loại bỏ căng thẳng kinh tế giữa các quốc gia. Khi bất định tăng, triển vọng thương mại có thể xấu đi ngay cả trong một hệ thống có quy tắc đa phương.
+            </p>
+          </div>
+
+          <h3 class="paper-h3">Khả năng thực tế của WTO: Phạm vi thực thi và giới hạn quyền lực</h3>
+          <p class="paper-text">
+            <strong>Phạm vi thực thi:</strong> Thành công trong việc thiết lập quy tắc, tạo diễn đàn đàm phán, giám sát chính sách thương mại và hỗ trợ giải quyết tranh chấp.
+          </p>
+          <p class="paper-text">
+            <strong>Giới hạn quyền lực:</strong> Không thể trực tiếp buộc các quốc gia ngừng xung đột, ngăn mọi biện pháp bảo hộ hay can thiệp điều hành nền kinh tế quốc gia. WTO có thể giảm bất định bằng quy tắc chung, nhưng không thể loại bỏ mâu thuẫn lợi ích và khủng hoảng trong một hệ thống quốc tế vẫn chịu tác động sâu sắc của quyền lực quốc gia.
+          </p>
+
+          <div class="plain-conclusion">
+            "Những quy tắc thương mại chung được xây dựng nhằm duy trì trật tự và hạn chế xung đột kinh tế. Tuy nhiên, khi khủng hoảng xảy ra, liệu WTO có đủ khả năng ngăn các quốc gia ưu tiên lợi ích nội địa, kể cả khi những quyết định đó ảnh hưởng đến dòng chảy thương mại quốc tế?"
+          </div>
+        `
+      },
+
+      5: {
+        num: "05",
+        title: "BẤT ỔN KINH TẾ",
+        bannerImg: "https://i.imgur.com/2y6UC7K.jpeg",
+        html: `
+          <div class="paper-keyword">BÁO CÁO THƯƠNG MẠI QUỐC TẾ | CHUYÊN ĐỀ 05</div>
+          <h2 class="paper-main-title">WTO THÚC ĐẨY TỰ DO THƯƠNG MẠI NHƯNG LÀM GIA TĂNG SỰ BẤT ỔN CHO CÁC NỀN KINH TẾ YẾU</h2>
+
+          <div class="paper-sapo">
+            Mở cửa thương mại giúp các nền kinh tế tiếp cận thị trường, vốn và công nghệ. Nhưng đối với những quốc gia có năng lực sản xuất hạn chế, mức độ phụ thuộc cao vào xuất khẩu hoặc nguyên liệu nhập khẩu có thể khiến các cú sốc bên ngoài lan truyền nhanh hơn.
+          </div>
+
+          <h3 class="paper-h3">Rủi ro hệ thống từ tự do hóa thương mại</h3>
+          <p class="paper-text">
+            Tự do hóa thương mại mở rộng cơ hội xuất khẩu nhưng đồng thời làm tăng mức độ tiếp xúc với biến động nhu cầu, giá cả và chính sách của đối tác. Những nền kinh tế phụ thuộc vào một vài mặt hàng xuất khẩu, thị trường hoặc chuỗi cung ứng có thể dễ tổn thương trước biến động bên ngoài. Doanh nghiệp nhỏ có thể gặp khó khăn khi cạnh tranh về năng suất, công nghệ và chi phí với các doanh nghiệp quy mô lớn. Tuy nhiên, bất ổn không phải hệ quả tất yếu của WTO; mức độ tổn thương còn phụ thuộc vào cơ cấu kinh tế, chính sách trong nước và khả năng đa dạng hóa thị trường.
+          </p>
+          <p class="paper-text">
+            Mở cửa thị trường tạo cơ hội tiếp cận khách hàng và nguồn lực toàn cầu, nhưng không phải nền kinh tế nào cũng bước vào cuộc cạnh tranh với xuất phát điểm như nhau. Khi chênh lệch về vốn, công nghệ và chính sách hỗ trợ còn lớn, tự do thương mại có thể khiến những doanh nghiệp và ngành sản xuất non trẻ chịu sức ép nặng nề.
+          </p>
+
+          <h3 class="paper-h3">Bằng chứng thực tế về sự dễ tổn thương</h3>
+
+          <div class="plain-evidence-box">
+            <div class="plain-evidence-title">1. Phụ thuộc vào xuất khẩu hàng hóa cơ bản</div>
+            <p class="paper-text">
+              Theo ghi nhận của UNCTAD trong giai đoạn 2021–2023, có tới <strong>95/143</strong> nền kinh tế đang phát triển phụ thuộc vào hàng hóa cơ bản.
+            </p>
+            <p class="paper-text">
+              UNCTAD định nghĩa một nền kinh tế phụ thuộc vào hàng hóa cơ bản khi hơn 60% kim ngạch xuất khẩu hàng hóa của nước đó là hàng hóa cơ bản, chủ yếu gồm năng lượng, khai khoáng và nông sản. <strong>Hơn 80%</strong> các nước kém phát triển nhất (LDCs) thuộc nhóm phụ thuộc này.
+            </p>
+            <p class="paper-text">
+              Nếu nguồn thu xuất khẩu tập trung vào một số hàng hóa, biến động giá quốc tế có thể ảnh hưởng mạnh đến doanh thu xuất khẩu, thu ngân sách và việc làm. Nền kinh tế có ngành sản xuất đa dạng thường có nhiều lựa chọn để bù đắp hơn khi một ngành gặp khó khăn. Tuy nhiên, số liệu này phản ánh tình trạng dễ tổn thương do cơ cấu xuất khẩu, chứ không chứng minh WTO là nguyên nhân duy nhất tạo ra sự phụ thuộc đó.
+            </p>
+          </div>
+
+          <div class="plain-evidence-box">
+            <div class="plain-evidence-title">2. Rủi ro từ thuế quan và bất định chính sách thương mại</div>
+            <div class="plain-evidence-img">
+              <img src="https://i.imgur.com/EXcLP3M.jpeg" alt="Rủi ro thuế quan và bất định thương mại">
+            </div>
+            <div class="plain-evidence-caption">Các nền kinh tế kém phát triển đối mặt rủi ro lớn khi các hàng rào thuế quan và bất định chính sách lan rộng.</div>
+            <p class="paper-text">
+              Trong báo cáo tháng 4/2025, WTO cảnh báo nếu các biện pháp thuế quan được áp dụng và bất định chính sách lan rộng, thương mại hàng hóa thế giới có thể giảm sâu hơn; các nước kém phát triển, vốn phụ thuộc đáng kể vào xuất khẩu, đối mặt với rủi ro đặc biệt.
+            </p>
+            <p class="paper-text">
+              Khi thị trường xuất khẩu thu hẹp hoặc giá bán giảm, các nền kinh tế có ít ngành thay thế và năng lực cạnh tranh hạn chế thường khó điều chỉnh nhanh. Đây là biểu hiện của sự phân bổ lợi ích và rủi ro không đồng đều trong thương mại toàn cầu.
+            </p>
+          </div>
+
+          <div class="plain-conclusion">
+            <strong>Kết luận:</strong> Hội nhập không tự động tạo ra khả năng chống chịu. Một nền kinh tế muốn hưởng lợi bền vững từ thương mại cần đa dạng hóa thị trường, nâng cao năng lực sản xuất và xây dựng chính sách ứng phó với cú sốc bên ngoài.
+          </div>
+        `
+      },
+
+      6: {
+        num: "06",
+        title: "GIA TĂNG PHỤ THUỘC",
+        bannerImg: "https://i.imgur.com/2y6UC7K.jpeg",
+        html: `
+          <div class="paper-keyword">BÁO CÁO THƯƠNG MẠI QUỐC TẾ | CHUYÊN ĐỀ 06</div>
+          <h2 class="paper-main-title">WTO MỞ RỘNG CƠ HỘI THƯƠNG MẠI TOÀN CẦU NHƯNG LÀM GIA TĂNG SỰ PHỤ THUỘC VÀO CÁC THỊ TRƯỜNG QUỐC TẾ</h2>
+
+          <div class="paper-sapo">
+            Tài liệu phân tích chuyên sâu về vai trò của WTO, cơ chế mở rộng thương mại toàn cầu, nguy cơ gia tăng sự phụ thuộc kinh tế vĩ mô và các giải pháp chiến lược nâng cao tính tự chủ cho các nền kinh tế đang phát triển.
+          </div>
+
+          <h3 class="paper-h3">Tổng quan về WTO và Động lực Thương mại Toàn cầu</h3>
+          <p class="paper-text">
+            Tổ chức Thương mại Thế giới (WTO) đóng vai trò nền tảng trong việc thiết lập hệ thống quy tắc thương mại đa phương minh bạch và dự đoán được, thúc đẩy quá trình cắt giảm rào cản thuế quan lẫn phi thuế quan trên phạm vi toàn cầu. Nhờ vào các nguyên tắc cốt lõi như Tối huệ quốc (MFN) và Đối xử quốc gia (NT), WTO đã tạo điều kiện thuận lợi cho các quốc gia thành viên đặc biệt là các nền kinh tế đang phát triển và chuyển đổi kết nối sâu rộng vào chuỗi giá trị toàn cầu (GVCs). Sự mở rộng thương mại không chỉ giúp tối ưu hóa việc phân bổ nguồn lực quốc tế, chuyên môn hóa sản xuất theo lợi thế so sánh, mà còn thúc đẩy dòng chảy FDI và chuyển giao công nghệ, từ đó bứt phá tăng trưởng GDP thông qua hoạt động xuất nhập khẩu hàng hóa, dịch vụ.
+          </p>
+
+          <h3 class="paper-h3">Các Dạng Thức Phụ Thuộc Kinh Tế Vĩ Mô</h3>
+          <p class="paper-text">
+            <strong>Dạng thức thứ nhất là phụ thuộc vào thị trường tiêu thụ xuất khẩu:</strong> Khi kim ngạch xuất khẩu của một quốc gia tập trung quá mức vào một vài đối tác thương mại lớn, bất kỳ biến động địa chính trị, chính sách bảo hộ đơn phương, hoặc sự điều chỉnh rào cản kỹ thuật (TBT/SPS) và tiêu chuẩn xanh tại các thị trường này đều trực tiếp gây chấn động mạnh đến năng lực sản xuất, doanh thu doanh nghiệp và tình hình việc làm trong nước.
+          </p>
+          <p class="paper-text">
+            <strong>Dạng thức thứ hai là phụ thuộc vào chuỗi cung ứng đầu vào nhập khẩu:</strong> Nhiều quốc gia tham gia vào mạng lưới sản xuất toàn cầu chủ yếu ở khâu gia công, lắp ráp có giá trị gia tăng thấp nhưng lại phụ thuộc tới 70-80% nguyên phụ liệu, hóa chất, linh kiện bán thành phẩm nhập khẩu từ bên ngoài. Khi chuỗi cung ứng toàn cầu bị đứt gãy, chi phí vận tải logistics tăng vọt hoặc xuất hiện rủi ro địa chính trị ở vùng nguồn cung, toàn bộ chuỗi sản xuất nội địa lập tức rơi vào thế bị động và nghẽn mạng lệnh.
+          </p>
+          <p class="paper-text">
+            Tuy nhiên, việc liên kết vô cùng chặt chẽ ấy lại gây ra rủi ro lan truyền và phản ứng dây chuyền đến từ sự liên kết rễ cây trong nền kinh tế phẳng khiến cho các tác động tiêu cực (như cú sốc tài chính, khủng hoảng năng lượng, hay biến động tỷ giá) nhanh chóng lan truyền qua kênh thương mại đa phương, biến động tỷ giá hối đoái và sự đảo chiều đột ngột của dòng vốn đầu tư trực tiếp nước ngoài (FDI).
+          </p>
+
+          <h3 class="paper-h3">Dẫn Chứng Thực Tế</h3>
+
+          <div class="plain-evidence-box">
+            <div class="plain-evidence-title">1. Các nước kém phát triển có mức độ tập trung xuất khẩu cao hơn</div>
+            <p class="paper-text">
+              Theo dữ liệu từ UNCTADstat, trong giai đoạn 2022–2024, chỉ số tập trung xuất khẩu bình quân của các nước kém phát triển nhất (LDCs) đạt mức <strong>5,14</strong> – cao hơn đáng kể so với mức <strong>3,26</strong> của các nền kinh tế đang phát triển và <strong>2,89</strong> của các nước phát triển. Chỉ số này phản ánh rằng cơ cấu xuất khẩu của nhóm nước đang phát triển còn nghèo nàn về chủng loại và thiếu đa dạng về đối tác thương mại, làm gia tăng tổn thương trước các biến động bên ngoài.
+            </p>
+            <p class="paper-text">
+              Sự tập trung cao độ vào một số ít mặt hàng nông sản, khoáng sản thô hoặc sản phẩm gia công giá trị gia tăng thấp khiến cán cân thương mại cực kỳ nhạy cảm với những biến động giá hàng hóa trên thị trường thế giới. Bất kỳ sự sụt giảm nhu cầu tiêu dùng nào hay việc thắt chặt chính sách tiền tệ tại các nước nhập khẩu sẽ lập tức gây suy giảm thu ngân sách nhà nước, cạn kiệt dự trữ ngoại hối và gây áp lực mất cân đối lên cán cân thanh toán quốc tế.
+            </p>
+          </div>
+
+          <div class="plain-evidence-box">
+            <div class="plain-evidence-title">2. Rủi ro không chỉ nằm ở đầu ra mà còn ở nguồn cung đầu vào</div>
+            <div class="plain-evidence-img">
+              <img src="https://i.imgur.com/DHsA7te.jpeg" alt="Rủi ro đứt gãy nguồn cung đầu vào">
+            </div>
+            <div class="plain-evidence-caption">Đứt gãy chuỗi cung ứng toàn cầu và biến động chi phí vận tải đe dọa trực tiếp sản xuất công nghiệp nội địa.</div>
+            <p class="paper-text">
+              Báo cáo của UNCTAD nhấn mạnh rằng sự phụ thuộc vào hàng hóa cơ bản và nguồn đầu vào nhập khẩu đã bộc lộ rõ lỗ hổng nguy hiểm trong các giai đoạn khủng hoảng toàn cầu như đại dịch COVID-19 và xung đột địa chính trị tại Ukraine. Việc gián đoạn vận tải biển, biến động giá năng lượng và lương thực tăng cao đã nhanh chóng biến thành lạm phát nhập khẩu tại các quốc gia đang phát triển.
+            </p>
+            <p class="paper-text">
+              Cơ chế lan truyền tác động vĩ mô diễn ra phức tạp thông qua 4 kênh chính:
+            </p>
+            <ul class="paper-ul">
+              <li><strong>(1) Kênh đơn hàng xuất khẩu sụt giảm:</strong> trực tiếp làm thu hẹp quy mô sản xuất và công suất vận hành của doanh nghiệp;</li>
+              <li><strong>(2) Kênh giá chi phí đầu vào tăng cao:</strong> bào mòn biên lợi nhuận, buộc doanh nghiệp cắt giảm quy mô kinh doanh;</li>
+              <li><strong>(3) Kênh việc làm và thu nhập:</strong> người lao động bị ảnh hưởng dây chuyền, suy giảm sức mua nội địa;</li>
+              <li><strong>(4) Kênh áp lực tỷ giá hối đoái cùng rủi ro lạm phát nhập khẩu:</strong> gây sức ép nghiêm trọng lên điều hành chính sách tiền tệ và tài khóa nội địa.</li>
+            </ul>
+          </div>
+
+          <h3 class="paper-h3">3. Khuyến Nghị Chính Sách và Định Hướng Chiến Lược</h3>
+          <p class="paper-text">
+            <strong>Đa dạng hóa thị trường và đối tác thương mại:</strong> bằng cách tận dụng triệt để các Hiệp định Thương mại Tự do (FTA) thế hệ mới để mở rộng thị phần sang các thị trường tiềm năng, giảm thiểu sự phụ thuộc quá mức vào một vài đối tác truyền thống.
+          </p>
+          <p class="paper-text">
+            <strong>Nâng cao tỷ lệ nội địa hóa và chủ động nguồn cung:</strong> bằng cách xây dựng các ngành công nghiệp hỗ trợ chiến lược, thúc đẩy chuyển dịch từ khâu gia công lắp ráp sang nghiên cứu, thiết kế (ODM) và sản xuất linh kiện cốt lõi nhằm nâng cao giá trị gia tăng nội địa.
+          </p>
+          <p class="paper-text">
+            <strong>Củng cố thị trường nội địa và nâng cao sức chống chịu:</strong> bằng cách phát triển quy mô tiêu dùng nội địa làm bệ đỡ vững chắc cho doanh nghiệp, kết hợp điều hành linh hoạt các công cụ tài khóa và tiền tệ để chủ động ứng phó trước các cú sốc bên ngoài cũng là một phương án đáng cân nhắc.
+          </p>
+
+          <div class="plain-conclusion">
+            <strong>Mục tiêu cốt lõi:</strong> Mục tiêu tối thượng của chính sách thương mại quốc tế không phải là bế quan tỏa cảng hay gạt bỏ sự phụ thuộc lẫn nhau, mà là xây dựng một nền kinh tế tự chủ, linh hoạt và có khả năng chống chịu cao trước các cú sốc bên ngoài thông qua chiến lược đa dạng hóa toàn diện.
+          </div>
+        `
+      }
+    };
+
+    // Hàm chuyển trang mượt mà theo đúng yêu cầu 2
+    function showScreen(screenId) {
+        const screens = document.querySelectorAll('.view-screen');
+
+        let targetScreen = document.getElementById(
+            'view-' + screenId
+        );
+
+        if (!targetScreen) return;
+
+        // Không chạy hiệu ứng nếu đang ở đúng trang
+        if (targetScreen.classList.contains('active')) return;
+
+        // Cho trang hiện tại rời đi
+        screens.forEach(screen => {
+            if (screen.classList.contains('active')) {
+                screen.classList.remove('active');
+                screen.classList.add('is-leaving');
+
+                const leavingScreen = screen;
+
+                setTimeout(() => {
+                    // Không ẩn nếu trang đã được mở lại
+                    if (!leavingScreen.classList.contains('active')) {
+                        leavingScreen.classList.remove('is-leaving');
+                    }
+                }, 330);
+            }
+        });
+
+        // Hiện trang mới
+        targetScreen.classList.remove('is-leaving');
+
+        // Đưa scroll về đầu trang
+        targetScreen.scrollTop = 0;
+
+        // Kích hoạt lại animation kể cả khi quay lại trang cũ
+        targetScreen.classList.remove('active');
+        void targetScreen.offsetWidth;
+        targetScreen.classList.add('active');
+
+        // Giữ nguyên logic điều hướng hiện tại
+    }
+
+    // Mở trang chi tiết
+    function openDetail(index) {
+      currentTopicIndex = index;
+      renderDetailContent();
+      showScreen('detail');
+    }
+
+    // Render nội dung plain text
+    function renderDetailContent() {
+      const data = database[currentTopicIndex];
+      if (!data) return;
+
+      document.getElementById('detail-display-num').innerText = data.num;
+      document.getElementById('detail-display-title').innerText = data.title;
+      document.getElementById('detail-header-img').src = data.bannerImg;
+      document.getElementById('detail-inner-html').innerHTML = data.html;
+
+      const prevBtn = document.getElementById('btn-prev-topic');
+      const nextBtn = document.getElementById('btn-next-topic');
+
+      if (currentTopicIndex <= 1) {
+        prevBtn.style.visibility = 'hidden';
+      } else {
+        prevBtn.style.visibility = 'visible';
+      }
+
+      if (currentTopicIndex >= 6) {
+        nextBtn.style.visibility = 'hidden';
+      } else {
+        nextBtn.style.visibility = 'visible';
+      }
+
+      document.getElementById('view-detail').scrollTop = 0;
+    }
+
+    // Chuyển đổi qua lại các đề mục
+    function navigateTopic(direction) {
+      const target = currentTopicIndex + direction;
+      if (target >= 1 && target <= 6) {
+        currentTopicIndex = target;
+        renderDetailContent();
+      }
+    }
+
+    // Modal Source theo yêu cầu 9
+    function openSourceModal() {
+      document.getElementById('source-modal').classList.add('active');
+    }
+
+    function closeSourceModal(e) {
+      document.getElementById('source-modal').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
